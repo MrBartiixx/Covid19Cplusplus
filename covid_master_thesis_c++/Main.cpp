@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <iostream>
 #include <random>
 #include <string>
@@ -47,11 +47,17 @@ public:
 	House house;
 	Workplace work;
 
+	int Eday;
+	int Iday;
+	int Ihospday;
+	int IICUday;
+	int Rday;
+
 
 	void actionGoHome()
 
 	{
-		if ((x - house.x > 300) || (x - house.x < -300) || (y - house.y > 300) || (y - house.y < -300))
+		if ((x - house.x > 200) || (x - house.x < -200) || (y - house.y > 200) || (y - house.y < -200))
 		{
 			x = house.x;
 			y = house.y;
@@ -83,7 +89,7 @@ public:
 
 	{
 		//If person at home, stay at px or move with probability inside home
-		if ((x >= house.x - house.dx) || (x <= house.x + house.dx) || (y >= house.y - house.dy) || (y <= house.y + house.dy))
+		if ((x >= house.x - house.dx) && (x <= house.x + house.dx) && (y >= house.y - house.dy) && (y <= house.y + house.dy))
 		{
 			std::default_random_engine generator;
 			std::uniform_real_distribution <float> distribution(0, 1);
@@ -139,14 +145,14 @@ public:
 	void actionGoWork()
 
 	{
-		if ((x - work.x > 300) || (x - work.x < -300) || (y - work.y > 300) || (y - work.y < -300))
+		if ((x - work.x > 200) || (x - work.x < -200) || (y - work.y > 200) || (y - work.y < -200))
 		{
 			x = work.x;
 			y = work.y;
 		}
 
 		//IF person not in work, at this function call, move person by 1 px towards work
-		if ((x < work.x - work.dx) or (x > work.x + work.dx) or (y < work.y - work.dy) or (y > work.y + work.dy))
+		if ((x < work.x - work.dx) || (x > work.x + work.dx) || (y < work.y - work.dy) || (y > work.y + work.dy))
 		{
 			if (x < x_work)
 			{
@@ -172,7 +178,7 @@ public:
 
 	{
 		//If person at work, stay at px or move with probability inside work
-		if ((x >= work.x - work.dx) or (x <= work.x + work.dx) or (y >= work.y - work.dy) or (y <= work.y + work.dy))
+		if ((x >= work.x - work.dx) && (x <= work.x + work.dx) && (y >= work.y - work.dy) && (y <= work.y + work.dy))
 		{
 			std::default_random_engine generator;
 			std::uniform_real_distribution <float> distribution(0, 1);
@@ -260,12 +266,13 @@ public:
 
 };
 
-bool contact(Human& person1, Human& person2)
+bool contact(Human& person1, Human& person2, int day)
 {
-	if ((person1.group != 3 && person2.group != 3) && ((person1.group == 2 /*&& person2.group == 1*/) || (/*person1.group == 1 &&*/ person2.group == 2)))//question
+	if ((person1.x == person2.x) && (person1.y == person2.y))
 	{
-		if ((person1.x == person2.x) && (person1.y == person2.y))
+		if ((person1.group != 3 && person2.group != 3) && ((person1.group == 2 && person2.group == 0) || (person1.group == 0 && person2.group == 2)))//question
 		{
+
 			if ((person1.x < person1.house.x + person1.house.dx) && (person1.x > person1.house.x - person1.house.dx) && (person1.y < person1.house.y + person1.house.dy) && (person1.y > person1.house.y - person1.house.dy))
 			{
 				return false;
@@ -281,13 +288,15 @@ bool contact(Human& person1, Human& person2)
 					if (person1.group == 2)
 					{
 						person2.group = 1;
+						person2.Eday = day;
 					}
 					
 					if (person2.group == 2)
 					{
 						person1.group = 1;
+						person1.Eday = day;
 					}
-							
+					
 					return true;
 				}
 				
@@ -324,7 +333,7 @@ int main()
 	std::vector<float> Iarray;
 	std::vector<float> Rarray;
 
-	int contactsPerDay = 0;
+
 
 //Agents
 
@@ -402,21 +411,13 @@ int main()
 	int f = 0;
 	for (f = 0; f < no_houses; f++)
 	{
-
-		bool done1 = false;
-		while (done1 == false)
-			{
-			
-			House house;
-			house.x = distribution_x(generator); 		
-			house.y = distribution_y(generator);
-			house.dx = distribution_dx_house(generator);
-			house.dy= distribution_dy_house(generator);
-			house.no_residents = 0;
-			HOU.push_back(house);
-			done1 = true;
-			}
-		
+		House house;
+		house.x = distribution_x(generator); 		
+		house.y = distribution_y(generator);
+		house.dx = distribution_dx_house(generator);
+		house.dy= distribution_dy_house(generator);
+		house.no_residents = 0;
+		HOU.push_back(house);	
 	}
 		
 
@@ -424,20 +425,13 @@ int main()
 	int k = 0;
 	for (k = 0; k < no_workplaces; k++)
 	{
-
-		bool done2 = false;
-		while (done2 == false)
-		{
-			Workplace workplace;
-			workplace.x = distribution_x(generator);
-			workplace.y = distribution_y(generator);
-			workplace.dx = distribution_dx_workplace(generator);
-			workplace.dy = distribution_dy_workplace(generator);
-			workplace.no_workers = 0;
-			WRP.push_back(workplace);
-				done2 = true;
-		}
-
+		Workplace workplace;
+		workplace.x = distribution_x(generator);
+		workplace.y = distribution_y(generator);
+		workplace.dx = distribution_dx_workplace(generator);
+		workplace.dy = distribution_dy_workplace(generator);
+		workplace.no_workers = 0;
+		WRP.push_back(workplace);
 	}
 
 //Spawn people
@@ -466,6 +460,8 @@ int main()
 
 		person.x = 1;
 		person.y = 1;
+		person.dx = 1;
+		person.dy = 1;
 		person.group = 0;
 		person.action = 0;
 		person.homeless = 1;
@@ -487,6 +483,8 @@ int main()
 
 		person.x = 1;
 		person.y = 1;
+		person.dx = 1;
+		person.dy = 1;
 		person.group = 0;
 		person.action = 0;
 		person.homeless = 0;
@@ -509,6 +507,8 @@ int main()
 
 		person.x = 1;
 		person.y = 1;
+		person.dx = 1;
+		person.dy = 1;
 		person.group = 2;
 		person.action = 0;
 		person.homeless = 0;
@@ -633,7 +633,10 @@ int main()
 	
 	}*/
 	
+	// debbuging
 
+	printf("\nxhome = %d, yhome = %d \n", PPL[55].x_home, PPL[55].y_home);
+	printf("\nxwork = %d, ywork = %d \n", PPL[55].x_work, PPL[55].y_work);
 	
 
 	//experiment
@@ -645,12 +648,60 @@ int main()
 
 	while (done == false)
 	{
-		printf("\nS: %d, E: %d, I: %d, R: %d, time: %d\n", S, E, I, R, T);
+		//printf("\nS: %d, E: %d, I: %d, R: %d, time: %d\n", S, E, I, R, T);
+		int contactsPerDay = 0;
+
+		int group0 = 0;
+		int group1 = 0;
+		int group2 = 0;
+		int group3 = 0;
+
+
+		for (int i = 0; i < N; i++)
+		{
+			if (PPL[i].group == 0)
+			{
+				group0++;
+			}
+			if (PPL[i].group == 1)
+			{
+				group1++;
+			}
+			if (PPL[i].group == 2)
+			{
+				group2++;
+			}
+			if (PPL[i].group == 3)
+			{
+				group3++;
+			}
+		}
+		printf("\nPPL in group 0: %d, PPL in group 1: %d, PPL in group 2: %d, PPL in group 3: %d", group0, group1, group2, group3);
+
+
+		for (int personcheck = 0; personcheck < N; personcheck++)
+		{
+			if (T - PPL[personcheck].Eday == 5)
+			{
+				std::default_random_engine generator;
+				std::uniform_real_distribution <float> distribution(0, 1);
+				float eps = distribution(generator);  // uniform distribution
+				if (eps > 0.1)
+				{
+					PPL[personcheck].group = 2;
+				}
+			}
+		}
+
+
+
 
 		for (hour = 0; hour < 24; hour++)
 		{
-			if (hour >= 0 && hour < 8)
 
+			printf("\nx = %d, y = %d \n", PPL[55].x, PPL[55].y);
+			if (hour >= 0 && hour < 8)
+				
 			{
 				for (timestamp = 0; timestamp < 200; timestamp++)
 				{
@@ -659,12 +710,13 @@ int main()
 						if (PPL[i].homeless == 0)
 						{
 							PPL[i].actionGoHome();
+
 							PPL[i].actionStayHome();
+
 							for (j = 0; j < N; j++)
 							{
-								if ((i != j) && (contact(PPL[i], PPL[j]) == true)) //explain
+								if ((i != j) && (contact(PPL[i], PPL[j],T) == true)) //explain
 								{
-
 									contactsPerDay = contactsPerDay + 1;
 								}
 
@@ -693,7 +745,7 @@ int main()
 							PPL[i].actionStayAtWork();
 							for (j = 0; j < N; j++)
 							{
-								if ((i != j) && (contact(PPL[i], PPL[j]) == true)) //explain
+								if ((i != j) && (contact(PPL[i], PPL[j], T) == true)) //explain
 								{
 
 									contactsPerDay = contactsPerDay + 1;
@@ -723,7 +775,7 @@ int main()
 
 						for (j = 0; j < N; j++)
 						{
-							if ((i != j) && (contact(PPL[i], PPL[j]) == true)) //explain
+							if ((i != j) && (contact(PPL[i], PPL[j], T) == true)) //explain
 							{
 								contactsPerDay = contactsPerDay + 1;
 							}
@@ -752,7 +804,7 @@ int main()
 							PPL[i].actionStayAtWork();
 							for (j = 0; j < N; j++)
 							{
-								if ((i != j) && (contact(PPL[i], PPL[j]) == true)) //explain
+								if ((i != j) && (contact(PPL[i], PPL[j], T) == true)) //explain
 								{
 									contactsPerDay = contactsPerDay + 1;
 								}
@@ -774,7 +826,7 @@ int main()
 						PPL[i].actionWalkFree();
 						for (j = 0; j < N; j++)
 						{
-							if ((i != j) && (contact(PPL[i], PPL[j]) == true)) //explain
+							if ((i != j) && (contact(PPL[i], PPL[j], T) == true)) //explain
 							{
 								contactsPerDay = contactsPerDay + 1;
 							}
@@ -783,24 +835,24 @@ int main()
 				}
 			}
 
-			//printf("\nHour passed: %d\n", hour);
+			
 		}
-
-
+				printf("\nContacts : %d\n", contactsPerDay);
 		        T = T + 1;
 			    int S1 = S;
 				int E1 = E;
 				int I1 = I;
 				int R1 = R;
 
-				float Sdot = (-b * contactsPerDay*S*I)/N;
-				float Edot = ((b * contactsPerDay*S*I) /N) - e * E;
+				float Sdot = -b * contactsPerDay;
+				float Edot = b * contactsPerDay - e * E;
 				float Idot = e * E - g * I;
 				float Rdot = g * I;
 
 				S = S1 + Sdot;
 				E = E1 + Edot;
 				I = I1 + Idot;
+
 				R = R1 + Rdot;
 
 				if (S < 0)
