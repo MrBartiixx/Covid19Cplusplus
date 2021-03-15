@@ -14,57 +14,57 @@ C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesi
           [
               _Rep=std::chrono::system_clock::rep
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(332,20): warning C4244: "inicjowanie": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(285,29): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(286,35): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(287,31): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(288,36): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(289,41): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(291,32): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(292,33): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(293,34): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(301,12): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(302,12): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(331,34): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(335,15): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(339,16): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(340,15): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(341,15): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(342,14): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(347,16): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(348,15): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(399,20): warning C4244: "inicjowanie": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
           with
           [
               _Rep=std::chrono::system_clock::rep
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(377,30): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(378,36): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(379,32): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(380,37): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(381,42): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(383,33): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(384,34): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(385,35): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(418,13): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(419,13): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(458,35): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(462,16): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(466,17): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(467,16): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(468,16): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(469,15): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(474,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(475,16): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(481,20): warning C4244: "inicjowanie": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(664,20): warning C4244: "inicjowanie": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
           with
           [
               _Rep=std::chrono::system_clock::rep
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(887,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(1070,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
           with
           [
               _Ty=float
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(888,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(1071,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
           with
           [
               _Ty=float
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(889,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(1072,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
           with
           [
               _Ty=float
           ]
-C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(890,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
+C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Main.cpp(1073,20): warning C4244: "argument": konwersja z "int" do "const _Ty", możliwa utrata danych
           with
           [
               _Ty=float
           ]
   Trwa generowanie kodu
-  2 of 415 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+  2 of 425 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   covid_master_thesis_c++.vcxproj -> C:\Users\Bartosz Wawrzyniak\Documents\GitHub\Covid19Cplusplus\covid_master_thesis_c++\Release\covid_master_thesis_c++.exe

@@ -281,6 +281,73 @@ public:
 
 };
 
+
+float homeless_rate = 0.0005;
+float initial_infected_rate = 0.01;
+float unemployment_rate = 0.12;
+float business_proportion = 0.01875;
+float business_proportion_informal = 0.4;
+float total_Wealth = 1000000000;
+float public_Wealth_rate = 0.01;
+float business_Wealt_rate = 0.05;
+float personal_Wealth_rate = 0.04;
+float public_Wealth = total_Wealth * public_Wealth_rate;
+float business_Wealth = total_Wealth * business_Wealt_rate;
+float personal_Wealth = total_Wealth * personal_Wealth_rate;
+float min_income = 900;
+float min_expense = 600;
+
+int N = 400; // Population
+int I_init = N * initial_infected_rate;  //Infected
+int S_init = N - (N * initial_infected_rate);
+
+
+int MostPoor = 0; //Most poor
+int Poor = 0; // Poor
+int WorkingClass = 0; // working class
+int Rich = 0; //Rich
+int MostRich = 0; // Most Rich
+
+
+int family_size_average = 3;
+//int no_houses = (N - N * homeless_rate) / family_size;
+//int no_workplaces = 20;
+
+int no_houses = (int)(N / family_size_average);
+int no_workplaces = (int)((N * business_proportion) + (N * business_proportion_informal));
+
+//Environment
+
+int Length = 300;  //each pixel corresponds to area 5x5 meters.
+int Width = 300;
+
+//for n in range(N) :
+//    PPL[n, 0] = random.uniform(0, Width)
+//    PPL[n, 1] = random.uniform(0, Length)
+
+//Pandemics Parameters
+
+int contagion_distance = 1;
+float contagion_probability = 0.9;
+int incubation_time = 5;
+int transmission_time = 8;
+int recovering_time = 20;
+int ICU_limit = N * 0.05;
+
+
+
+float b = 0.001;//0.001;  // infectious rate, controls the rate of spread which represents the probability of transmitting disease between a susceptible and an infectious individual.
+float q = 0.01;  // b / g // contact ratio
+float g = 0.05;  // b / q // recovery rate
+float e = 0.1;  // incubation rate is the rate of latent individuals becoming infectious(average duration of incubation is 1 / s)
+
+
+//Constraints
+
+int I_hosp_max = N * 0.02;
+int I_icu_max = N * 0.01;
+
+
 bool contact(Human& person1, Human& person2, int day)
 {
 	if ((person1.x == person2.x) && (person1.y == person2.y))
@@ -335,7 +402,7 @@ void EtoItransition(int N, int T) {
 			std::default_random_engine generator(seed);
 			std::uniform_real_distribution <float> distribution(0, 1);
 			float eps = distribution(generator);  // uniform distribution
-			if (eps > 0.1){
+			if (eps <= contagion_probability){
 				PPL[i].group = 2;
 				PPL[i].Iday = T;
 				//printf("\nGroup: %d, Iday: %d", PPL[i].group, PPL[i].Iday);
@@ -349,6 +416,118 @@ void EtoItransition(int N, int T) {
 						std::uniform_real_distribution <float> distribution(0, 1);
 						float eps = distribution(generator);  // uniform distribution
 						if (eps < 0.05) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 10 && PPL[i].age <= 19) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.003) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.05) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 20 && PPL[i].age <= 29) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.012) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.05) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 30 && PPL[i].age <= 39) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.032) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.05) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 40 && PPL[i].age <= 49) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.049) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.063) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 50 && PPL[i].age <= 59) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.102) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.122) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 60 && PPL[i].age <= 69) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.166) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.274) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 70 && PPL[i].age <= 79) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.243) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.432) {
+							PPL[i].group = 5;
+						}
+					}
+				}
+				if (PPL[i].age >= 80) {
+					std::default_random_engine generator(seed);
+					std::uniform_real_distribution <float> distribution(0, 1);
+					float eps = distribution(generator);  // uniform distribution
+					if (eps < 0.273) {
+						PPL[i].group = 4;
+						std::default_random_engine generator(seed);
+						std::uniform_real_distribution <float> distribution(0, 1);
+						float eps = distribution(generator);  // uniform distribution
+						if (eps < 0.709) {
 							PPL[i].group = 5;
 						}
 					}
@@ -372,8 +551,11 @@ int main()
 	std::ofstream excel_file_initialization; // excel file for exporting initial distribution of houses, workplaces etc.
 	std::ofstream exce_file_results; // excel file for exporting final results of SEIR model
 
-//Variables 
 
+	printf("\ntotal houses are = %d\n", no_houses);
+	printf("\ntottal workplaces are = %d\n", no_workplaces);
+//Variables 
+	/*
 	float homeless_rate = 0.0005;
 	float initial_infected_rate = 0.01;
 	float unemployment_rate = 0.12;
@@ -388,7 +570,7 @@ int main()
 	float personal_Wealth = total_Wealth * personal_Wealth_rate;
 	float min_income = 900;
 	float min_expense = 600;
-
+	*/
 	/* Social Stratum explanation
 	each workplace and house are given a social stratum
 	according to the house stratum, the respective stratum is assigned to the people that stay at the home --> the family members
@@ -413,7 +595,7 @@ int main()
 	int	Q = 0;  // Quarantined
 	int	N = S + E + I + R;  // Population
 	*/
-
+	/*
 	int N = 400; // Population
 	int I_init = N * initial_infected_rate;  //Infected
 	int S_init = N - (N * initial_infected_rate);
@@ -425,13 +607,14 @@ int main()
 	int Rich = 0; //Rich
 	int MostRich = 0; // Most Rich
 
+	*/
 
 //Agents
 
 	//std::vector<Human> PPL;
 	//std::vector<House> HOU;
 	//std::vector<Workplace> WRP;
-	
+	/*
 	int family_size_average = 3;
 	//int no_houses = (N - N * homeless_rate) / family_size;
 	//int no_workplaces = 20;
@@ -441,8 +624,8 @@ int main()
 	printf("\ntotal houses are = %d\n", no_houses);
 	printf("\ntottal workplaces are = %d\n", no_workplaces);
 
-
-
+	*/
+	/*
 //Environment
 
 	int Length = 300;  //each pixel corresponds to area 5x5 meters.
@@ -473,7 +656,7 @@ int main()
 
 	int I_hosp_max = N * 0.02;
 	int I_icu_max = N * 0.01;
-
+	*/
 
 
 //Random generators
